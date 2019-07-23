@@ -1,0 +1,112 @@
+    @import '../../../assets/scss/variables';
+    @import '../../../assets/scss/mixins';
+    // Start Market
+    #market {
+        .search {
+            width: 40%;
+            height: 4.857rem;
+            position: relative;
+            input {
+                width: 100%;
+                border: 0;
+                outline: 0;
+                padding: .7rem 2rem;
+                border-radius: 20px;
+                opacity: 0.6;
+                @include box-shadow(0px, 3px, 6px, 0, rgba(0, 0, 0, .16));
+                @include typoStyle($open, .8rem, 500);
+                color: $primary-color;
+            }
+            i {
+                color: $secondary-color;
+                position: absolute;
+                font-size: 1rem;
+                right: 5%;
+                top: 37%;
+            }
+        }
+        .card {
+            margin-top: 1rem;
+            background: $white;
+            border: 0;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(221, 223, 226, 0.3);
+            h3 {
+                span {
+                    @include typoStyle($openExtraBold, 1.5rem, 600);
+                    color: $secondary-color;
+                    text-transform: uppercase;
+                }
+            }
+            h5 {
+                @include typoStyle($openBold, 1rem, 900);
+                color: $secondary-color;
+            }
+            .fa-filter {
+                color: $secondary-color;
+            }
+            img {
+                margin: $auto-margin;
+                filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
+                border-radius: 50%;
+                width: 60%;
+            }
+            .price h4,
+            .categories h4,
+            .rating h4 {
+                color: $secondary-color;
+                @include typoStyle($openSemiBold, .9rem, 600);
+            }
+            .categories mat-checkbox {
+                @include typoStyle($openSemiBold, .8rem, 600);
+            }
+            .rating {
+                @include typoStyle($openSemiBold, .8rem, 600);
+            }
+            button {
+                @extend %secondary-btn;
+            }
+            .overlay {
+                top: 0;
+                left: 0;
+                border: 0;
+                border-radius: 20px;
+                box-shadow: 0px 0px 20px rgba(221, 223, 226, 0.3);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                background: rgba(0, 0, 0, .8);
+                color: $white;
+                i {
+                    cursor: pointer;
+                    font-size: 2rem;
+                    margin-top: 50%;
+                }
+                display: none;
+            }
+            &:hover {
+                .overlay {
+                    display: block;
+                }
+            }
+        }
+        .no-gutters>.col,
+        .no-gutters>[class*="col-"] {
+            padding-right: 15px;
+        }
+        .fa-star {
+            color: #FFCC00;
+        }
+        ngb-rating {
+            color: #FFCC00;
+            font-size: 2rem;
+            outline: 0;
+        }
+        .page {
+            margin: 20px auto 5px auto;
+        }
+    }
+    
+    // End Market

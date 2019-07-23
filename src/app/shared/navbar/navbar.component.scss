@@ -1,0 +1,83 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets//scss/mixins';
+// Start Nav
+nav {
+    ul {
+        li {
+            a {
+                @extend %link;
+                #count {
+                    position: absolute;
+                    top: 40%;
+                    right: 2%;
+                    background: $secondary-color;
+                    color: $white;
+                    @include typoStyle($openBold, .8rem, 900);
+                    width: 25px;
+                    height: 25px;
+                    line-height: 25px;
+                    @include border-radius(50px);
+                }
+            }
+            .active {
+                color: $secondary-color !important;
+                i {
+                    color: $secondary-color !important;
+                }
+            }
+        }
+    }
+    .login,
+    .logout {
+        list-style: none;
+        a {
+            @extend %link;
+            cursor: pointer;
+        }
+    }
+    .fa-search {
+        font-size: .8rem;
+        color: $grey;
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active,
+    .btn-secondary:not(:disabled):not(.disabled):active,
+    .show>.btn-secondary.dropdown-toggle {
+        background: none !important;
+    }
+    .btn-secondary {
+        background: none !important;
+        width: 50%;
+        border: 0;
+    }
+    .btn-secondary:hover {
+        background: none !important;
+    }
+    .btn.focus,
+    .btn:focus {
+        box-shadow: none !important;
+        outline: 0 !important;
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active:focus,
+    .btn-secondary:not(:disabled):not(.disabled):active:focus,
+    .show>.btn-secondary.dropdown-toggle:focus {
+        box-shadow: none !important;
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active,
+    .btn-secondary:not(:disabled):not(.disabled):active,
+    .show>.btn-secondary.dropdown-toggle {
+        background: none !important;
+        border-color: none !important;
+    }
+    .btn-secondary.focus,
+    .btn-secondary:focus {
+        box-shadow: none !important;
+    }
+    #dropdownMenuButton {
+        img {
+            border-radius: 50%;
+            max-width: 60% !important;
+        }
+    }
+}
+
+// End Nav

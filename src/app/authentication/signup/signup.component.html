@@ -1,0 +1,223 @@
+<!-- Start Singup -->
+<section id="signup" class="py-5">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <img class="img-fluid" src="../../../assets/img/signup.png" alt="signup">
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <h2 class="text-center">Sign Up For Free</h2>
+                    <!-- Start Form -->
+                    <form [formGroup]="signup" (ngSubmit)="onSignup(signup)">
+                        <!-- Start Stepper -->
+                        <mat-horizontal-stepper labelPosition="bottom" #stepper>
+                            <!-- Start Fist Step -->
+                            <mat-step [stepControl]="signup">
+                                <ng-template matStepLabel>Account Information</ng-template>
+                                <div class="row">
+                                    <!-- First Name & Last Name -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="col-11 row">
+                                                <div class="col-md-6 col-xs-12">
+                                                    <mat-form-field>
+                                                        <input matInput placeholder="First Name" formControlName="fname">
+                                                    </mat-form-field>
+                                                    <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.fname.touched && signup.controls.fname.errors?.required">
+                                                        This field is required</mat-hint>
+                                                    <mat-hint class="alert alert-danger" *ngIf="signup.controls.fname.dirty && signup.controls.fname.errors?.pattern">
+                                                        First name must not begin with numbers or spaces</mat-hint>
+                                                </div>
+                                                <div class="col-md-6 col-xs-12">
+                                                    <mat-form-field>
+                                                        <input matInput placeholder="Last Name" formControlName="lname">
+                                                    </mat-form-field>
+                                                    <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.lname.touched && signup.controls.lname.errors?.required">
+                                                        This field is required</mat-hint>
+                                                    <mat-hint class="alert alert-danger" *ngIf="signup.controls.lname.dirty && signup.controls.lname.errors?.pattern">
+                                                        Last name must not begin with numbers or spaces</mat-hint>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <div class="col-11">
+                                                <mat-form-field>
+                                                    <input matInput placeholder="Email" formControlName="email">
+                                                </mat-form-field>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.email.touched && signup.controls.email.errors?.required">
+                                                    This field is required</mat-hint>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.email.dirty && signup.controls.email.errors?.pattern">
+                                                    Invalid Email</mat-hint>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Password -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
+                                            <div class="col-11">
+                                                <mat-form-field>
+                                                    <input matInput placeholder="Password" [type]="!hide ? 'password' : 'text'" formControlName="password">
+                                                    <mat-icon matSuffix (click)="hide = !hide">
+                                                        {{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                </mat-form-field>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.password.touched && signup.controls.password.errors?.required">
+                                                    This field is required</mat-hint>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.password.dirty && signup.controls.password.errors?.pattern">
+                                                    Password should have at Least 1 UPPERCASE and Special characters
+                                                </mat-hint>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.password.errors?.minlength">Password should have at least 6 characters</mat-hint>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.password.errors?.maxlength">Password should have at most 12 characters</mat-hint>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Confirm Password -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
+                                            <div class="col-11">
+                                                <mat-form-field>
+                                                    <input matInput placeholder="Confirm Password" [type]="!hide ? 'password' : 'text'" formControlName="password_confirmation">
+                                                    <mat-icon matSuffix (click)="hide = !hide">
+                                                        {{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                </mat-form-field>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.password_confirmation.errors?.equalTo && signup.controls.password_confirmation.touched">Passwords are not matched</mat-hint>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.password_confirmation.errors?.required && signup.controls.password_confirmation.touched">Confirm Password is Required</mat-hint>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-5">
+                                    <button mat-button (click)="goForward(stepper)" type="button">Next</button>
+                                </div>
+                            </mat-step>
+                            <!-- End First Step -->
+                            <!-- Start Second Step -->
+                            <mat-step [stepControl]="signup">
+                                <ng-template matStepLabel>Personal Information</ng-template>
+                                <div class="row">
+                                    <!-- Phone -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                            <div class="col-11">
+                                                <mat-form-field>
+                                                    <input matInput placeholder="Phone" formControlName="phone">
+                                                </mat-form-field>
+                                                <mat-hint class="alert alert-danger d-block" *ngIf="signup.controls.phone.errors?.digits">Only Accept Numbers</mat-hint>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Address -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                            <div class="col-11">
+                                                <mat-form-field>
+                                                    <input matInput placeholder="Address" formControlName="location">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Birthdate -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </div>
+                                            <div class="col-11">
+                                                <mat-form-field>
+                                                    <input matInput [matDatepicker]="picker" placeholder="Birthdate" formControlName="birthdate">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Gender -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-venus-mars"></i>
+                                            </div>
+                                            <div class="col-11 d-flex">
+                                                <label class="d-block mt-3">Gender</label>
+                                                <mat-radio-group aria-label="Select an option" *ngFor="let gender of genders">
+                                                    <label class="radio"><span class="labelRadio">{{gender}}</span>
+                                                      <input type="radio" value="{{gender}}" formControlName="gender"
+                                                          (change)="changeGender(gender)">
+                                                      <span class="checkmark"></span>
+                                                  </label>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-5">
+                                    <button mat-button type="button" (click)="goBack(stepper)" class="mr-5 backBtn">Back</button>
+                                    <button mat-button (click)="goForward(stepper)" type="button">Next</button>
+                                </div>
+                            </mat-step>
+                            <!-- End Second Step -->
+                            <!-- Start Third Step -->
+                            <mat-step [stepControl]="signup">
+                                <ng-template matStepLabel>Documents</ng-template>
+                                <div class="row">
+                                    <!-- ID Img -->
+                                    <div class="col-12 mt-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="fas fa-id-card"></i>
+                                            </div>
+                                            <div class="col-11 row align-items-center">
+                                                <div class="col-4">
+                                                    <h6>Personal Image</h6>
+                                                </div>
+                                                <div class="col-4">
+                                                </div>
+                                                <div class="col-4">
+                                                    <button class="input-file">
+                                                        <input id="image" name="image" formControlName="personalIMG"  type="file" >
+                                                         
+                                                      <label for="file-input1">UPLOAD</label>
+                                                  </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-5">
+                                    <button mat-button type="button" (click)="goBack(stepper)" class="mr-5 backBtn">Back</button>
+                                    <button mat-button matStepperNext>Signup</button>
+                                </div>
+                            </mat-step>
+                            <!-- End Third Step -->
+                        </mat-horizontal-stepper>
+                        <!-- End Stepper -->
+                    </form>
+                    <!-- End Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Signup -->

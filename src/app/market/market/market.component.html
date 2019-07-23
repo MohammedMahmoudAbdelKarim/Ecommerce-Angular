@@ -1,0 +1,83 @@
+<!-- Start Market -->
+<section id="market" class="py-4">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="search m-auto"><input type="text" [(ngModel)]="item" class="mt-3" name="" placeholder="Search for a Product" id=""><i class="fas fa-search"></i></div>
+            <div class="row up">
+                <!-- < !-- SideBar -->
+                <div class="col-xl-3 col-md-12 col-xs-12">
+                    <div class="card filter">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <i class="fas fa-filter mr-3"></i>
+                                <span>Filter</span>
+                            </h3>
+                            <hr>
+                            <div class="price">
+                                <h4>Price</h4>
+                                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [options]="options_price">
+                                </ng5-slider>
+                                <hr>
+                            </div>
+                            <div class="categories">
+                                <h4>Categories</h4>
+                                <section class="example-section">
+                                    <mat-checkbox class="example-margin d-block" value="Watch" [formControl]="watches">
+                                        Watches
+                                    </mat-checkbox>
+                                    <mat-checkbox class="example-margin d-block" value="Bike" [formControl]="bikes">
+                                        Bikes
+                                    </mat-checkbox>
+                                    <mat-checkbox class="example-margin d-block" value="Glass" [formControl]="glasses">
+                                        Glasses
+                                    </mat-checkbox>
+                                </section>
+                                <hr>
+                            </div>
+                            <div class="rating">
+                                <h4>Rating</h4>
+                                <div class="form-group">
+                                    <pre>From: <b>{{ revFrom.value }}</b></pre>
+                                    <ngb-rating [formControl]="revFrom"></ngb-rating>
+                                    <pre>To: <b>{{ revTo.value }}</b></pre>
+                                    <ngb-rating [formControl]="revTo"></ngb-rating>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn apply mt-3" (click)="fliter()">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profiles Cards -->
+                <div class="col-xl-9 col-md-12 col-xs-12 row no-gutters">
+                    <div class="col-xl-4 col-md-6 col-xs-12" *ngFor="let product of products | search:item | paginate: { itemsPerPage: 6, currentPage: p }; let id = index">
+                        <div class="card p-4">
+                            <p class="price text-right m-0">{{product.Price}} $</p>
+                            <img src="{{product['Src']}}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{product.Name}}</h5>
+                                <p class="card-text m-0">Category: {{product.Category}}</p>
+                                <div class="mt-3">
+                                    <span *ngFor="let number of [1,2,3,4,5]">
+                                  <i *ngIf="number <= product.Rate" class="fas fa-star"></i>
+                                  <i *ngIf="number > product.Rate" class="far fa-star"></i>
+                              </span>
+                                </div>
+                            </div>
+                            <div class="overlay text-center">
+                                <i class="fas fa-shopping-cart mr-2" (click)="addToCart()" (click)="sendProduct(product)"></i>
+                                <i class="fas fa-heart ml-2" (click)="sendFavourite(product)"></i>
+                                <button class="d-block mt-4" [routerLink]="['/market', id]" (click)="singleProduct(product)">Show Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center page">
+                <pagination-controls class="page" (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Market -->

@@ -1,1 +1,226 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/variables';
+@import './assets/scss/mixins';
+@import '~@angular/material/theming';
+@include mat-core();
+$galees-primary: mat-palette($mat-indigo);
+$galees-accent: mat-palette($mat-pink, A200, A100, A400);
+$galees-warn: mat-palette($mat-red);
+$galees-theme: mat-light-theme($galees-primary, $galees-accent, $galees-warn);
+@include angular-material-theme($galees-theme);
+//----------------------------------------- Font-Face
+@font-face {
+    font-family: $openBold;
+    src: url(./assets/fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: $openExtraBold;
+    src: url(./assets/fonts/OpenSans-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: $openRegualr;
+    src: url(./assets/fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: $openSemiBold;
+    src: url(./assets/fonts/OpenSans-SemiBold.ttf);
+}
+
+
+/* ---------------------------------- Common ------------------------------- */
+
+html,
+body {
+    background: $milk;
+}
+
+p {
+    @include typoStyle($open, .8rem, 500);
+    color: $grey;
+}
+
+i {
+    cursor: pointer;
+}
+
+
+/* ------------------------------- Range ----------------------------- */
+
+.ng5-slider .ng5-slider-pointer {
+    background: $secondary-color !important;
+    outline: 0 !important;
+}
+
+.ng5-slider .ng5-slider-selection {
+    background: $secondary-color !important;
+}
+
+.ng5-slider .ng5-slider-span {
+    @extend %link;
+    font-size: .8rem !important;
+}
+
+.ng5-slider .ng5-slider-pointer.ng5-slider-active:after {
+    background-color: $secondary-color !important;
+}
+
+
+/* -------------------------- Pagination ----------------------------- */
+
+.ngx-pagination {
+    @include typoStyle($open, .8rem, 500);
+    text-transform: uppercase;
+}
+
+.ngx-pagination .current {
+    background: $secondary-color !important;
+    border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+    background: $primary-color !important;
+    color: $white !important;
+}
+
+
+/*  -------------- Check BOx --------------------- */
+
+.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $secondary-color;
+}
+
+.mat-step-header.cdk-keyboard-focused,
+.mat-step-header.cdk-program-focused,
+.mat-step-header:hover {
+    background: none;
+}
+
+
+/* ------------------------ Popup ---------------------- */
+
+.swal2-popup {
+    background: $milk !important;
+    border-radius: 5.3125em !important;
+    -webkit-border-radius: 5.3125em !important;
+    -moz-border-radius: 5.3125em !important;
+    -ms-border-radius: 5.3125em !important;
+    -o-border-radius: 5.3125em !important;
+}
+
+.swal2-icon.swal2-warning {
+    color: $secondary-color !important;
+    border-color: $secondary-color !important;
+}
+
+.swal2-styled.swal2-confirm {
+    background: $secondary-color !important;
+}
+
+.swal2-styled.swal2-cancel {
+    background: #CFD4D8 !important;
+}
+
+.swal2-title {
+    font-family: $open !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: $secondary-color !important;
+    text-transform: uppercase;
+}
+
+.swal2-styled.swal2-confirm,
+.swal2-styled.swal2-cancel {
+    font-family: $openBold !important;
+    font-size: 1rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase;
+}
+
+
+/* --------------------------- Agnular Material Form --------------------------- */
+
+mat-form-field {
+    position: relative;
+    width: 100%;
+    font-family: $open !important;
+    font-size: .8rem !important;
+}
+
+mat-icon {
+    color: $secondary-color;
+    cursor: pointer;
+}
+
+.mat-stepper-horizontal {
+    background: transparent !important;
+}
+
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+    font-size: .8rem !important;
+    font-family: $open;
+    font-weight: 900;
+}
+
+.mat-step-header .mat-step-icon {
+    background: $primary-color !important;
+    font-family: $open;
+    font-weight: 900;
+    font-size: .8rem;
+}
+
+.mat-step-label-selected {
+    color: $secondary-color !important;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background: $secondary-color !important;
+    font-family: $open;
+    font-weight: 900;
+    font-size: .8rem;
+}
+
+.mat-datepicker-toggle,
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+    color: $white;
+}
+
+.mat-warn .mat-input-element,
+.mat-form-field-invalid .mat-input-element {
+    color: $primary-color !important;
+}
+
+// Hint for Inputs 
+.mat-hint {
+    color: #D8000C !important;
+    font-family: $open !important;
+    font-size: .8rem !important;
+    font-weight: 500 !important;
+}
+
+.mat-datepicker-toggle,
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+    color: $white;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon-button,
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon-button {
+    background: $secondary-color !important;
+}
+
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+    color: $secondary-color !important;
+}

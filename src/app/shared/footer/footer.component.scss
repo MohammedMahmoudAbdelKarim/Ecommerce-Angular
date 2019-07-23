@@ -1,0 +1,33 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+// Start Footer
+footer {
+    background: #F2F2F2;
+    a {
+        @extend %link;
+        color: $grey;
+        text-decoration: none;
+    }
+    .social-media {
+        .link {
+            cursor: pointer;
+            width: 3.5rem;
+            line-height: 3.5rem;
+            border-radius: 50%;
+            height: 3.5rem;
+            background: $secondary-color;
+            font-size: 1.3rem;
+            color: $white;
+            &:hover {
+                background: $white;
+                color: $primary-color;
+            }
+        }
+    }
+    p {
+        @include typoStyle($open, .8rem, 500);
+        color: $primary-color;
+    }
+}
+
+// End Footer

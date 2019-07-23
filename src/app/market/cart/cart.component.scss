@@ -1,0 +1,50 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+// Start Cart
+#cart {
+    .item {
+        img {
+            border: .5px solid $grey;
+            padding: 5px;
+        }
+        h3 {
+            color: $grey;
+            @include typoStyle($open, 1rem, 500);
+        }
+        .actions {
+            i {
+                color: $secondary-color;
+            }
+        }
+        hr {
+            border: 1px solid $grey;
+        }
+    }
+    .removeText {
+        @include typoStyle($openBold, .8rem, 900);
+        color: $grey;
+    }
+    .total {
+        background: #CFD4D8;
+        position: fixed;
+        top: 135px;
+        right: 135px;
+        z-index: 2;
+        @include border-radius(20px);
+        button {
+            @extend %secondary-btn;
+        }
+        h4 {
+            @include typoStyle($openBold, 1.3rem, 900);
+        }
+        h6 {
+            @include typoStyle($open, 1rem, 500);
+            color: $secondary-color;
+            span {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+// End Cart

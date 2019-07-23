@@ -1,0 +1,17 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+// Start Order
+#order {
+    h3 {
+        @include typoStyle($openBold, 1rem, 500);
+        color: $secondary-color;
+    }
+    i {
+        color: $secondary-color;
+    }
+    button {
+        @extend %secondary-btn;
+    }
+}
+
+// End Order

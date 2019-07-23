@@ -1,0 +1,111 @@
+<!-- Start Order -->
+<section id="order" class="py-5">
+    <div class="container">
+        <div class="container-fluid">
+            <h3 mat-dialog-title> Complete the order </h3>
+            <mat-dialog-content>
+                <form [formGroup]="order" (ngSubmit)="onOrder(order)">
+                    <div class="row">
+                        <!-- From & To -->
+                        <div class="col-12 mt-3">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="col-11 row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="picker" placeholder="From" formControlName="from">
+                                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="pickerTo" placeholder="To" formControlName="to">
+                                            <mat-datepicker-toggle matSuffix [for]="pickerTo">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #pickerTo></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Phone -->
+                        <div class="col-12 mt-3">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="col-11">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Phone" formControlName="phone">
+
+                                    </mat-form-field>
+                                    <mat-hint class="alert alert-danger d-block" *ngIf="order.controls.phone.errors?.digits">Only Accept Numbers</mat-hint>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Address -->
+                        <div class="col-12 mt-3">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="col-11 row">
+                                    <table class="example-full-width" cellspacing="0">
+                                        <tr>
+                                            <div class="col-sm-12 col-md-4">
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="City" formControlName="city">
+                                                    </mat-form-field>
+                                                </td>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="State" formControlName="state">
+                                                    </mat-form-field>
+                                                </td>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="postal">
+                                                    </mat-form-field>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Info -->
+                        <div class="col-12 mt-3">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <i class="fas fa-sticky-note"></i>
+                                </div>
+                                <div class="col-11">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput #message maxlength="256" placeholder="Addition Info" formControlName="addition">
+                                        <mat-hint align="start" style="color: #FF0141 !important;"><strong>Don't disclose personal info</strong> </mat-hint>
+                                        <mat-hint align="end" style="color: #FF0141 !important;">{{message.value.length}} / 256</mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <button mat-button type="submit">Make Order</button>
+                    </div>
+                </form>
+            </mat-dialog-content>
+        </div>
+    </div>
+</section>
+<!-- End Order -->

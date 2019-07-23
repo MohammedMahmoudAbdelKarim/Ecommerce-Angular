@@ -1,0 +1,29 @@
+@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/mixins.scss';
+// Start Login
+#login {
+    h2 {
+        @include typoStyle($open, 1.2rem, 900);
+        color: $secondary-color;
+        &::after {
+            @extend %line;
+        }
+    }
+    i {
+        font-size: 1.3rem;
+        margin-right: 2rem;
+        color: $secondary-color;
+    }
+    mat-checkbox {
+        color: $grey !important;
+    }
+    a {
+        @extend %link;
+        color: $secondary-color;
+    }
+    button {
+        @extend %secondary-btn;
+    }
+}
+
+// End Login

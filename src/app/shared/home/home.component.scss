@@ -1,0 +1,106 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+// Start Common
+.section-header {
+    h2 {
+        @include typoStyle($openBold, 1.5rem, 900);
+        color: $primary-color;
+        text-transform: uppercase;
+        @extend %line;
+    }
+}
+
+.card {
+    @extend %card;
+}
+
+// End Common
+// Start Slider
+section#slider {
+    .carousel-caption {
+        right: 68%;
+        bottom: 60px;
+        left: 15%;
+        text-align: left;
+        width: 33%;
+        h2 {
+            @include typoStyle($openBold, 1.8rem, 900);
+            color: $primary-color;
+            text-transform: uppercase;
+        }
+        button {
+            @extend %secondary-btn;
+        }
+    }
+}
+
+// End Slider
+// Start Work
+section#work {
+    .card {
+        .card-title {
+            @include typoStyle($open, 1.1rem, 900);
+            color: $secondary-color;
+            text-transform: uppercase;
+        }
+        i {
+            font-size: 1.6rem;
+            color: $secondary-color;
+        }
+    }
+}
+
+// End Work
+// Start Reviews
+#reviews {
+    h4 {
+        color: $secondary-color;
+        @include typoStyle($openBold, 1.2rem, 900);
+    }
+    .card {
+        h3 {
+            @include typoStyle($openBold, 1rem, 900);
+            color: $secondary-color;
+        }
+        img {
+            filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
+            position: relative;
+            top: -10px;
+        }
+    }
+}
+
+// End Reviews
+// Start NewSeltter
+#newSeltter {
+    background: $primary-color;
+    h5 {
+        @include typoStyle($openBold, 1.5rem, 900);
+        color: $white;
+        text-transform: uppercase;
+    }
+    .email {
+        position: relative;
+        width: 70%;
+        input {
+            position: absolute;
+            width: 100%;
+            border: 0;
+            outline: 0;
+            color: $grey;
+            @include border-radius(50px);
+            &::placeholder {
+                @include typoStyle($open, .8rem, 500);
+                color: $grey;
+            }
+        }
+        button {
+            position: absolute;
+            right: 0;
+            @extend %secondary-btn;
+            padding: 0.55rem 1rem;
+        }
+    }
+}
+
+// End NewSeltter
